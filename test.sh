@@ -2,7 +2,7 @@
 
 sudo su
 
-function custom_install() {
+function custom_install {
   local package=$1
   echo "Do you want to install $package?"
   read -p "(y/N) " response
