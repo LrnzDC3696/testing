@@ -1,13 +1,17 @@
-function ask_to_install() {
+#!/bin/bash
+
+sudo su
+
+function custom_install() {
   local package=$1
   echo "Do you want to install $package?"
   read -p "(y/N) " response
   if [[ $response =~ ^y ]]; then
-    echo "Installing $package..."
-    sudo apt-get install $package
+    sudo pacman -S --noconfirm $package &&
+      echo "$1 Installed" >> $LOG_FILE
   else
-    echo "Not installing $package."
+    echo "$1 NOT INSTALLED."
   fi
 }
 
-ask_to_install python3
+custom_install python3
